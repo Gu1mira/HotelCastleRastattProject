@@ -74,4 +74,7 @@ public class DialogContent extends ReusableMethods {
 
     @FindBy(css = "[class='spinner_container']")
     public WebElement spinnerContainer;
+
+    @FindBy(xpath = "(//select[@class='pika-select pika-select-month'])[2]//option")
+    public List<WebElement> checkOutMonthNames;
 }
