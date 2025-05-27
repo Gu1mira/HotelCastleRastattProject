@@ -14,21 +14,6 @@ public class DialogContent extends ReusableMethods {
         PageFactory.initElements(GWD.getDriver(), this);
     }
 
-    //US_08_Book_Now
-    @FindBy(xpath = "(//a[text()='JETZT BUCHEN'])[3]")
-    public WebElement jetztBuchenButton;
-
-    public WebElement getWebElement(String strElementName) {
-
-        switch (strElementName.trim()) {
-            case "Jetzt Buchen":
-                return this.jetztBuchenButton;
-
-        }
-        return null;
-    }
-
-
     //US_04_CheckInCheckOutPOM
     @FindBy(xpath = "(//*[@id='lang_sel_list']//img)[6]")
     public WebElement englishIcon;
@@ -195,4 +180,37 @@ public class DialogContent extends ReusableMethods {
 
     @FindBy(xpath = "(//a[@href='https://www.paydirekt.de/agb/index.html'])")
     public WebElement paydirektLink;
+
+    //US_08_JetztBuchen
+    @FindBy(xpath = "(//a[text()='JETZT BUCHEN'])[3]")
+    public WebElement jetztBuchenButton;
+
+    @FindBy(xpath = "//*[@id='rooms-search-form']/div[1]/div[1]/div[2]/div[1]/input")
+    public WebElement startDatePlaceholder;
+
+    @FindBy(xpath = "//*[@id='rooms-search-form']/div[1]/div[2]/div[2]/div[1]/input")
+    public WebElement endDatePlaceholder;
+
+    @FindBy(xpath = "//*[@id='rooms-search-form']/div[3]/div/div/div/div[1]/div[1]/div[1]/div/div")
+    public WebElement datePicker;
+
+    @FindBy(css = ".day.past")
+    public WebElement dayPast;
+
+
+    public WebElement getWebElement(String strElementName) {
+
+        switch (strElementName.trim()) {
+            case "Jetzt Buchen":
+                return this.jetztBuchenButton;
+            case "Search Start Date":
+                return this.startDatePlaceholder;
+            case "Search End Date":
+                return this.endDatePlaceholder;
+            case "datePicker":
+                return this.datePicker;
+
+        }
+        return null;
+    }
 }
