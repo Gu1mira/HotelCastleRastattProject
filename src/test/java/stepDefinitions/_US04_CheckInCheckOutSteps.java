@@ -28,7 +28,7 @@ public class _US04_CheckInCheckOutSteps {
     int lastDayOfMonth = currentMonth.lengthOfMonth();
     int randomCheckInDate = (int) (Math.random() * (lastDayOfMonth - dayOfMonth + 1)) + dayOfMonth;
     List<Integer> checkOutPreviousDays = new ArrayList<>();
-    int randomCheckOutDate = (int) (Math.random() * (lastDayOfMonth - randomCheckInDate + 1)) + randomCheckInDate;
+    int randomCheckOutDate = (int) (Math.random() * (lastDayOfMonth - randomCheckInDate)) + randomCheckInDate+1;
     String randomCheckInDateStr = String.valueOf(randomCheckInDate);
     String randomCheckOutDateStr = String.valueOf(randomCheckOutDate);
     String checkInDate = randomCheckInDateStr + "/" + String.format("%02d", today.getMonthValue()) + "/" + year;
