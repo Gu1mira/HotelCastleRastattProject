@@ -114,6 +114,15 @@ public class ReusableMethods {
         Select select = new Select(element);
         select.selectByValue(value);
     }
+    public void selectMenu(WebElement dropdownMenu, List<WebElement> list) {
+        Select select = new Select(dropdownMenu);
+        wait.until(ExpectedConditions.elementToBeClickable(dropdownMenu));
+        dropdownMenu.click();
+        wait.until(ExpectedConditions.visibilityOfAllElements(list));
+        select.selectByIndex(randomGenerator(list.size()));
+    }
+
+
     public void hoverOver(WebElement element) {
         wait.until(ExpectedConditions.visibilityOf(element));
         new Actions(GWD.getDriver()).moveToElement(element).build().perform();

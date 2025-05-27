@@ -63,6 +63,68 @@ public class DialogContent extends ReusableMethods {
     @FindBy(xpath = "(//select[@class='pika-select pika-select-month'])[2]//option")
     public List<WebElement> checkOutMonthNames;
 
+    //stepDefinitions._09_Kontaktdaten
+    @FindBy(xpath = "//*[text()='Kasse']")
+    public WebElement kasseText;
+
+    @FindBy(css = "[id='first_name']")
+    public WebElement firstName;
+
+    @FindBy(css = "[id='last_name']")
+    public WebElement lastname;
+
+    @FindBy(css = "[id='email']")
+    public WebElement email;
+
+    @FindBy(css = "[id='phone']")
+    public WebElement phone;
+
+    @FindBy(css = "[id='country']")
+    public WebElement selectCountryMenu;
+
+    @FindBy(xpath = "//select[@id='country']//option")
+    public List<WebElement>selectCountry;
+
+    @FindBy(css = "[id='zip']")
+    public WebElement postalCode;
+
+    @FindBy(css = "[id='address1']")
+    public WebElement address1;
+
+    @FindBy(css = "[id='address2']")
+    public WebElement address2;
+
+    @FindBy(css = "[id='city']")
+    public WebElement city;
+
+    @FindBy(css = "[id='state']")
+    public WebElement selectStateMenu;
+
+    @FindBy(xpath = "//select[@id='state']//option")
+    public List<WebElement>selectState;
+
+    @FindBy(css = "[data-label='Gastname']")
+    public WebElement guestName;
+
+    @FindBy(css = "[data-label='Auftragsnummer']")
+    public WebElement orderNumber;
+
+    @FindBy(css = "[data-label='VAT ID']")
+    public WebElement vatID;
+
+    @FindBy(css = "[title='Cost center']")
+    public WebElement costCenter;
+
+
+
+
+
+
+
+
+
+
+
     //_12_Datenschutz_POM
     @FindBy(xpath = "//a[text()='Datenschutz']")
     public WebElement datenSchutzClick;

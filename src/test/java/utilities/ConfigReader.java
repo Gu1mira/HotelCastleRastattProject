@@ -31,5 +31,64 @@ public class ConfigReader {
         return Integer.parseInt(properties.getProperty(key));
     }
 
+    public static void updateProperty(String keyword) {
+        switch (keyword){
+            case "firstname":
+                String firstname="Test"+faker.name().firstName();
+                properties.setProperty(keyword,firstname);
+                break;
+            case "lastname":
+                String lastname="Test"+faker.name().lastName();
+                properties.setProperty(keyword,lastname);
+                break;
+            case "email":
+                String email="Test"+faker.internet().emailAddress();
+                properties.setProperty(keyword,email);
+                break;
+            case "phone":
+                String phone="Test"+faker.phoneNumber().phoneNumber();
+                properties.setProperty(keyword,phone);
+                break;
+            case "postalCode":
+                String postalCode = faker.number().digits(4);
+                properties.setProperty(keyword, postalCode);
+                break;
+            case "address1":
+                String address1 = faker.address().fullAddress();
+                properties.setProperty(keyword, address1);
+                break;
+            case "address2":
+                String address2 = faker.address().secondaryAddress();
+                properties.setProperty(keyword, address2);
+                break;
+            case "city":
+                String city = faker.address().city();
+                properties.setProperty(keyword, city);
+                break;
+            case "gastName":
+                String gastName = "Test" + faker.name().fullName();
+                properties.setProperty(keyword, gastName);
+                break;
+            case "orderNumber":
+                String orderNumber = faker.number().digits(10);
+                properties.setProperty(keyword, orderNumber);
+                break;
+            case "vatID":
+                String vatID = faker.idNumber().valid();
+                properties.setProperty(keyword, vatID);
+                break;
+            case "costCenter":
+                String costCenter = faker.company().industry();
+                properties.setProperty(keyword, costCenter);
+                break;
+            case "referans":
+                String referans = faker.lorem().word();
+                properties.setProperty(keyword, referans);
+                break;
 
+
+        }
+
+
+    }
 }
