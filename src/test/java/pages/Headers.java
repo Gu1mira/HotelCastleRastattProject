@@ -16,7 +16,7 @@ public class Headers extends ReusableMethods {
     @FindBy(xpath = "(//a[text()='Start'])[3]")
     public WebElement start;
 
-    @FindBy(xpath = "//*[text()='Über uns']")
+    @FindBy(xpath = "(//a[text()='Über uns'])[3]")
     public WebElement uberUns;
 
     @FindBy(xpath = "//*[text()='Anfahrt']")

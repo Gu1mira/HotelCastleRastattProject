@@ -27,5 +27,11 @@ public class _02_Headers {
 
     @Then("The customer clicks Über Uns button")
     public void theCustomerClicksUberUnsButton() {
+        hd.clickFunction(hd.uberUns);
+    }
+
+    @And("The customer should see the Uber Uns text on the Über Uns page")
+    public void theCustomerShouldSeeTheUberUnsTextOnTheUberUnsPage() {
+        Assert.assertEquals(dc2.txtUberUns.getText(),"Über uns");
     }
 }

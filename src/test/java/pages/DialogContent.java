@@ -272,6 +272,9 @@ public class DialogContent extends ReusableMethods {
     @FindBy (xpath = "//h3[text()='CASTLE HOTEL RASTATT']")
     public WebElement txtHotelRastatt;
 
+    @FindBy(xpath = "//h2[text()='Über uns']")
+    public WebElement txtUberUns;
+
 
     public WebElement getWebElement(String strElementName) {
 
