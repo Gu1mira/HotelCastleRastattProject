@@ -286,6 +286,17 @@ public class DialogContent extends ReusableMethods {
     public WebElement txtJetztBuchen;
 
 
+    @FindBy(xpath="(//*[@id='lang_sel_list']//li//img)[5]")
+    public WebElement germanIcon;
+
+    @FindBy(css="img.logo")
+    public WebElement homepageLogo;
+
+    @FindBy(xpath = "//a")
+    public WebElement datenschutzLinks;
+
+
+
     public WebElement getWebElement(String strElementName) {
 
         switch (strElementName.trim()) {
