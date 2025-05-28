@@ -6,6 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 import utilities.GWD;
 import utilities.ReusableMethods;
 
+import java.security.cert.X509Certificate;
 import java.util.List;
 
 
@@ -266,6 +267,23 @@ public class DialogContent extends ReusableMethods {
 
     @FindBy(css = ".day.past")
     public WebElement dayPast;
+
+    // _02_Headers sayfa içi POM
+
+    @FindBy (xpath = "//h3[text()='CASTLE HOTEL RASTATT']")
+    public WebElement txtHotelRastatt;
+
+    @FindBy(xpath = "//h2[text()='Über uns']")
+    public WebElement txtUberUns;
+
+    @FindBy(xpath = "//h3[text()='SO FINDEN SIE UNS']")
+    public WebElement txtAnfahrt;
+
+    @FindBy(xpath = "//h3[text()='Aktivitäten']")
+    public WebElement txtAktivitäten;
+
+    @FindBy(xpath = "//p[text()='Check-in']")
+    public WebElement txtJetztBuchen;
 
 
     public WebElement getWebElement(String strElementName) {

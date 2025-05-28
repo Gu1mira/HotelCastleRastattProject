@@ -13,17 +13,20 @@ public class Headers extends ReusableMethods {
 
     //US_01_Homepage Logo
 
-    @FindBy(xpath = "//*[text()='Start']")
+    @FindBy(xpath = "(//a[text()='Start'])[3]")
     public WebElement start;
 
-    @FindBy(xpath = "//*[text()='Über uns']")
+    @FindBy(xpath = "(//a[text()='Über uns'])[3]")
     public WebElement uberUns;
 
-    @FindBy(xpath = "//*[text()='Anfahrt']")
+    @FindBy(xpath = "(//a[text()='Anfahrt'])[3]")
     public WebElement anfahrt;
 
-    @FindBy(xpath = "//*[text()='Aktivitäten']")
+    @FindBy(xpath = "(//a[text()='Aktivitäten'])[3]")
     public WebElement aktivitäten;
+
+    @FindBy(xpath = "(//a[text()=' 07222 1590750'])[3]")
+    public WebElement phoneNumber;
 
     //US_08_Book_Now
     @FindBy(xpath = "(//a[text()='JETZT BUCHEN'])[3]")
