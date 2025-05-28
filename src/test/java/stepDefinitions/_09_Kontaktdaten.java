@@ -14,35 +14,6 @@ public class _09_Kontaktdaten {
 
 
 
-    @Given("User is on the Booking page")
-    public void userIsOnTheBookingPage() {
-        GWD.getDriver().get("https://hotel-castle-rastatt.de/");
-
-
-    }
-
-
-    @When("The user selects a check-in date")
-    public void theUserSelectsACheckInDate() {
-
-    }
-
-    @And("User selects an exit date greater than the entry date")
-    public void userSelectsAnExitDateGreaterThanTheEntryDate() {
-    }
-
-    @Then("Rooms for the selected range are displayed")
-    public void roomsForTheSelectedRangeAreDisplayed() {
-    }
-
-    @When("The user selects a room from the list that appears")
-    public void theUserSelectsARoomFromTheListThatAppears() {
-    }
-
-    @And("The user switches to the information filling screen")
-    public void theUserSwitchesToTheInformationFillingScreen() {
-    }
-
     @Then("The booking details on the information filling screen must match the selected details")
     public void theBookingDetailsOnTheInformationFillingScreenMustMatchTheSelectedDetails() {
     }
@@ -85,13 +56,8 @@ public class _09_Kontaktdaten {
             element.sendKeysFunction(element.vatID,ConfigReader.getProperty("vatID"));
             ConfigReader.updateProperty("costCenter");
             element.sendKeysFunction(element.costCenter,ConfigReader.getProperty("costCenter"));
-
-
-
-
-
-
-
+            ConfigReader.updateProperty("reference");
+            element.sendKeysFunction(element.reference,ConfigReader.getProperty("reference"));
 
         }
 
@@ -99,5 +65,12 @@ public class _09_Kontaktdaten {
 
     @Then("User clicks the confirmation button and verifies the confirmation message")
     public void userClicksTheConfirmationButtonAndVerifiesTheConfirmationMessage() {
+        element.wait.until(ExpectedConditions.visibilityOf(element.acceptTextControl));
+        element.verifyContainsText(element.acceptTextControl,"Ich stimme den");
+        element.clickFunction(element.agreeTermsCheckBox);
+        element.clickFunction(element.rezervationBtn);
+
+
+
     }
 }

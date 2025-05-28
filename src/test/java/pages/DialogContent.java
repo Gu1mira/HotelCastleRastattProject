@@ -112,12 +112,20 @@ public class DialogContent extends ReusableMethods {
     @FindBy(css = "[data-label='VAT ID']")
     public WebElement vatID;
 
-    @FindBy(css = "[title='Cost center']")
+    @FindBy(css = "[data-label='Kostenstelle']")
     public WebElement costCenter;
 
+    @FindBy(css = "[title='reference']")
+    public WebElement reference;
 
+    @FindBy(linkText = "Ich stimme den")
+    public WebElement acceptTextControl;
 
+    @FindBy(xpath = "//label[@for='agree_terms']/span[@class='box']")
+    public WebElement agreeTermsCheckBox;
 
+    @FindBy(xpath = "//*[text()='Reservierung abschließen']")
+    public WebElement rezervationBtn;
 
 
 
