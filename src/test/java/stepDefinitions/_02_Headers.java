@@ -34,4 +34,14 @@ public class _02_Headers {
     public void theCustomerShouldSeeTheUberUnsTextOnTheUberUnsPage() {
         Assert.assertEquals(dc2.txtUberUns.getText(),"Über uns");
     }
+
+    @Then("The customer clicks Anfahrt button")
+    public void theCustomerClicksAnfahrtButton() {
+        hd.clickFunction(hd.anfahrt);
+    }
+
+    @And("The customer should see the So Fınden Sıe Uns text on the Anfahrt page")
+    public void theCustomerShouldSeeTheSoFındenSıeUnsTextOnTheAnfahrtPage() {
+        Assert.assertEquals(dc2.txtAnfahrt.getText(),"SO FINDEN SIE UNS");
+    }
 }

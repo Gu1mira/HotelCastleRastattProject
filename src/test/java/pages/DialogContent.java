@@ -6,6 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 import utilities.GWD;
 import utilities.ReusableMethods;
 
+import java.security.cert.X509Certificate;
 import java.util.List;
 
 
@@ -274,6 +275,9 @@ public class DialogContent extends ReusableMethods {
 
     @FindBy(xpath = "//h2[text()='Über uns']")
     public WebElement txtUberUns;
+
+    @FindBy(xpath = "//h3[text()='SO FINDEN SIE UNS']")
+    public WebElement txtAnfahrt;
 
 
     public WebElement getWebElement(String strElementName) {
