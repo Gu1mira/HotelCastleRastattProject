@@ -279,6 +279,12 @@ public class DialogContent extends ReusableMethods {
     @FindBy(xpath = "//h3[text()='SO FINDEN SIE UNS']")
     public WebElement txtAnfahrt;
 
+    @FindBy(xpath = "//h3[text()='Aktivitäten']")
+    public WebElement txtAktivitäten;
+
+    @FindBy(xpath = "//p[text()='Check-in']")
+    public WebElement txtJetztBuchen;
+
 
     public WebElement getWebElement(String strElementName) {
 

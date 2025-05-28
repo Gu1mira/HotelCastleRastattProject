@@ -8,6 +8,9 @@ import pages.DialogContent;
 import pages.Headers;
 import utilities.ReusableMethods;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
+
 public class _02_Headers {
 
     Headers hd=new Headers();
@@ -43,5 +46,38 @@ public class _02_Headers {
     @And("The customer should see the So Fınden Sıe Uns text on the Anfahrt page")
     public void theCustomerShouldSeeTheSoFındenSıeUnsTextOnTheAnfahrtPage() {
         Assert.assertEquals(dc2.txtAnfahrt.getText(),"SO FINDEN SIE UNS");
+    }
+
+    @Then("The customer clicks Aktivitäten button")
+    public void theCustomerClicksAktivitatenButton() {
+        hd.clickFunction(hd.aktivitäten);
+    }
+
+    @And("The customer should see the Aktivitäten text on the Aktivitäten page")
+    public void theCustomerShouldSeeTheAktivitatenTextOnTheAktivitatenPage() {
+        Assert.assertEquals(dc2.txtAktivitäten.getText(),"Aktivitäten");
+    }
+
+    @Then("The customer clicks the phone number button")
+    public void theCustomerClicksThePhoneNumberButton() {
+        hd.clickFunction(hd.phoneNumber);
+        try {
+            Robot robot = new Robot();
+            robot.keyPress(KeyEvent.VK_ESCAPE);   // ESC tuşuna bas
+            robot.keyRelease(KeyEvent.VK_ESCAPE); // ESC tuşunu bırak
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Then("The customer clicks JETZT BUCHEN button")
+    public void theCustomerClicksJETZTBUCHENButton() {
+        hd.clickFunction(hd.jetztBuchenButton);
+    }
+
+    @And("The customer should be redirected to the hotel's reservation page")
+    public void theCustomerShouldBeRedirectedToTheHotelSReservationPage() {
+        Assert.assertEquals(dc2.txtJetztBuchen.getText(),"Check-in");
     }
 }
