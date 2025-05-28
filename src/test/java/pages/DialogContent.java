@@ -267,6 +267,11 @@ public class DialogContent extends ReusableMethods {
     @FindBy(css = ".day.past")
     public WebElement dayPast;
 
+    // _02_Headers sayfa içi POM
+
+    @FindBy (xpath = "//h3[text()='CASTLE HOTEL RASTATT']")
+    public WebElement txtHotelRastatt;
+
 
     public WebElement getWebElement(String strElementName) {
 
