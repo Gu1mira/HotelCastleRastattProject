@@ -3,6 +3,7 @@ package stepDefinitions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import pages.DialogContent;
@@ -10,6 +11,9 @@ import utilities.ConfigReader;
 import utilities.GWD;
 import utilities.ReusableMethods;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 
 public class _12_Datenschutz_De_Class {
@@ -81,5 +85,14 @@ public class _12_Datenschutz_De_Class {
 
     @Then("Page links should be visible clickable accessible")
     public void page_links_should_be_visible_clickable_accessible() {
+        List<WebElement> links = Arrays.asList(dc.faceBookLinks, dc.facebookPlugins, dc.instagramPrivacyLink, dc.googleGaopToutLink, dc.googleAnswerLink, dc.googleSettingsLink, dc.googlePoliciesLink, dc.googlePrivacyLink, dc.googlePrivacy2Link, dc.googlePrivacy3Link, dc.facebookPrivacyLink, dc.facebookPrivacyLink2, dc.instagramPluginLink, dc.googleBrowserPlugin, dc.googleSupportLink, dc.googleSettingsOnWeb, dc.facebookSettingsScreen, dc.yourOnlineChoices, dc.googleFonts, dc.adobePrivacy, dc.adobePolicies, dc.adobePolicy, dc.klarnaLinks, dc.klarnaLink, dc.klarnaLink2, dc.klarnaCheckout, dc.klarnaSofort, dc.sofortLink, dc.paydirektLink, dc.payLink);
+        List<String> hrefs = new ArrayList<>();
+        for (WebElement link : links) {
+            hrefs.add(link.getAttribute("href"));
+        }
+        for (String href : hrefs) {
+            GWD.getDriver().get(href);
+            GWD.getDriver().navigate().back();
+        }
     }
 }
