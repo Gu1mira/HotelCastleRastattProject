@@ -204,7 +204,7 @@ public class DialogContent extends ReusableMethods {
     @FindBy(xpath = "(//a[@href='https://de-de.facebook.com/about/privacy/'])[1]")
     public WebElement facebookPrivacyLink;
 
-    @FindBy(xpath = "//a[@href='https://de-de.facebook.com/about/privacy/'])[2]")
+    @FindBy(xpath = "(//a[@href='https://de-de.facebook.com/about/privacy/'])[2]")
     public WebElement facebookPrivacyLink2;
 
     @FindBy(xpath = "(//a[text()='https://instagram.com/about/legal/privacy/'])[2]")
