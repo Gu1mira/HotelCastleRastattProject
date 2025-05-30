@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class _US04_CheckInCheckOutSteps {
+public class _04_CheckInCheckOutSteps {
     DialogContent dc = new DialogContent();
     LocalDate today = LocalDate.now();
     YearMonth currentMonth = YearMonth.now();
@@ -31,10 +31,16 @@ public class _US04_CheckInCheckOutSteps {
     int randomCheckOutDate = (int) (Math.random() * (lastDayOfMonth - randomCheckInDate)) + randomCheckInDate+1;
     String randomCheckInDateStr = String.valueOf(randomCheckInDate);
     String randomCheckOutDateStr = String.valueOf(randomCheckOutDate);
-    String checkInDate = randomCheckInDateStr + "/" + String.format("%02d", today.getMonthValue()) + "/" + year;
-    String checkOutDate = randomCheckOutDateStr + "/" + String.format("%02d", today.getMonthValue()) + "/" + year;
+    String checkInDate = String.format("%02d", Integer.parseInt(randomCheckInDateStr))
+            + "/" + String.format("%02d", today.getMonthValue())
+            + "/" + year;
+    String checkOutDate = String.format("%02d", Integer.parseInt(randomCheckOutDateStr))
+            + "/" + String.format("%02d", today.getMonthValue())
+            + "/" + year;
     LocalDate nextMonthDate = today.plusMonths(1);
     String nextMonthName = nextMonthDate.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH);
+    String nextCheckOutRandomStr;
+    String nextCheckOutDate;
 
     @Given("Navigate to the Hotel Castle Rastatt")
     public void navigateToTheHotelCastleRastatt() {
@@ -150,9 +156,13 @@ public class _US04_CheckInCheckOutSteps {
 
     @And("The customer enters  the check-out date")
     public void theCustomerEntersTheCheckOutDate() {
-        if (dc.checkIndateList.get(randomCheckInDate - 1).getText().equals(String.valueOf(lastDayOfMonth))) {
-            System.out.println(dc.checkIndateList.get(randomCheckInDate - 1).getText());
-            dc.clickFunction(dc.checkOutdateList.get((int) (Math.random() * (lastDayOfMonth)) + 1));
+        if (randomCheckInDate==lastDayOfMonth) {
+            int nextCheckOutRandom = (int) (Math.random() *(lastDayOfMonth))+1;
+            nextCheckOutRandomStr = String.valueOf(nextCheckOutRandom);
+            nextCheckOutDate = String.format("%02d", Integer.parseInt(nextCheckOutRandomStr))
+                    + "/" + String.format("%02d", today.plusMonths(1).getMonthValue())
+                    + "/" + year;
+            dc.clickFunction(dc.checkOutdateList.get(nextCheckOutRandom-1));
 
         } else {
             System.out.println(randomCheckOutDate);
@@ -172,8 +182,15 @@ public class _US04_CheckInCheckOutSteps {
 
         dc.wait.until(ExpectedConditions.attributeToBe(dc.checkInWidget, "value", checkInDate));
         Assert.assertEquals(dc.checkInWidget.getAttribute("value"), checkInDate);
-        dc.wait.until(ExpectedConditions.attributeToBe(dc.checkOutWidget, "value", checkOutDate));
-        Assert.assertEquals(dc.checkOutWidget.getAttribute("value"), checkOutDate);
+
+        if (randomCheckInDate==lastDayOfMonth){
+            dc.wait.until(ExpectedConditions.attributeToBe(dc.checkOutWidget,"value",nextCheckOutDate));
+            Assert.assertEquals(dc.checkOutWidget.getAttribute("value"), nextCheckOutDate);
+            System.out.println(nextCheckOutDate);
+        }else {
+            dc.wait.until(ExpectedConditions.attributeToBe(dc.checkOutWidget, "value", checkOutDate));
+            Assert.assertEquals(dc.checkOutWidget.getAttribute("value"), checkOutDate);
+        }
     }
 
     @When("The customer clicks the GO button")
