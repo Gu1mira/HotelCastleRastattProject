@@ -308,6 +308,15 @@ public class DialogContent extends ReusableMethods {
     public WebElement slideShowRightButton;
     @FindBy(xpath = "//p[text()='WILLKOMMEN BEIM']")
     public WebElement greetingText;
+    public WebElement anfahrtButton;
+    @FindBy(xpath = "//h3[text()='SO FINDEN SIE UNS']")
+    public WebElement anfahrtVerify;
+    @FindBy(css = "[href='https://hotel-castle-rastatt.de/ueber-uns']")
+    public WebElement uberUnsButton;
+    @FindBy(xpath = "//h2[text()='Über uns']")
+    public WebElement uberUnsVerify;
+    @FindBy(css = "[href='https://hotel-castle-rastatt.de/aktivitaeten']")
+    public WebElement aktivitaetenButton;
 
 
 
