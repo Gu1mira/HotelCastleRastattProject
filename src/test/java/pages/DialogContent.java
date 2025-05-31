@@ -84,7 +84,7 @@ public class DialogContent extends ReusableMethods {
     public WebElement selectCountryMenu;
 
     @FindBy(xpath = "//select[@id='country']//option")
-    public List<WebElement>selectCountry;
+    public List<WebElement> selectCountry;
 
     @FindBy(css = "[id='zip']")
     public WebElement postalCode;
@@ -102,7 +102,7 @@ public class DialogContent extends ReusableMethods {
     public WebElement selectStateMenu;
 
     @FindBy(xpath = "//select[@id='state']//option")
-    public List<WebElement>selectState;
+    public List<WebElement> selectState;
 
     @FindBy(css = "[data-label='Gastname']")
     public WebElement guestName;
@@ -127,11 +127,6 @@ public class DialogContent extends ReusableMethods {
 
     @FindBy(xpath = "//*[text()='Reservierung abschließen']")
     public WebElement rezervationBtn;
-
-
-
-
-
 
 
     //_12_Datenschutz_POM
@@ -256,21 +251,36 @@ public class DialogContent extends ReusableMethods {
     @FindBy(xpath = "(//a[text()='JETZT BUCHEN'])[3]")
     public WebElement jetztBuchenButton;
 
+//    @FindBy(xpath = "input[placeholder='-']")
+//    List<WebElement> placeholders;
+//    public WebElement startDatePlaceholder = placeholders.get(0);
+//    public WebElement endDatePlaceholder = placeholders.get(1);
+
+    // WARNING!
+    // ⚠️ WebElement'leri constructor dışında List.get(0) gibi ifadelerle doğrudan initialize etme.
+    // Çünkü @FindBy anotasyonları PageFactory.initElements() çağrılmadan önce çalışmaz.
+
     @FindBy(xpath = "//*[@id='rooms-search-form']/div[1]/div[1]/div[2]/div[1]/input")
     public WebElement startDatePlaceholder;
 
     @FindBy(xpath = "//*[@id='rooms-search-form']/div[1]/div[2]/div[2]/div[1]/input")
     public WebElement endDatePlaceholder;
 
-    @FindBy(xpath = "//*[@id='rooms-search-form']/div[3]/div/div/div/div[1]/div[1]/div[1]/div/div")
+    @FindBy(css = "div.calendar-container")
     public WebElement datePicker;
 
-    @FindBy(css = ".day.past")
-    public WebElement dayPast;
+    @FindBy(xpath = "//div[contains(@class,'day') and not(contains(@class,'disabled'))]//p")
+    public List<WebElement> enabledDays;  // Seçilebilir günlerin <p> tag'larındaki sayılar
+
+    @FindBy(css = "div.day.endDate.ui-state-checkout")
+    public WebElement selectedDay;
+
+    @FindBy(xpath = "//*[@id='rooms-search-form']/div[3]/div/div/div/div[1]/div[1]/div[2]/div/div/div[2]/div[2]")
+    public WebElement arrow;
 
     // _02_Headers sayfa içi POM
 
-    @FindBy (xpath = "//h3[text()='CASTLE HOTEL RASTATT']")
+    @FindBy(xpath = "//h3[text()='CASTLE HOTEL RASTATT']")
     public WebElement txtHotelRastatt;
 
     @FindBy(xpath = "//h2[text()='Über uns']")
@@ -286,10 +296,10 @@ public class DialogContent extends ReusableMethods {
     public WebElement txtJetztBuchen;
 
 
-    @FindBy(xpath="(//*[@id='lang_sel_list']//li//img)[5]")
+    @FindBy(xpath = "(//*[@id='lang_sel_list']//li//img)[5]")
     public WebElement germanIcon;
 
-    @FindBy(css="img.logo")
+    @FindBy(css = "img.logo")
     public WebElement homepageLogo;
 
     @FindBy(xpath = "//a")
@@ -328,7 +338,6 @@ public class DialogContent extends ReusableMethods {
     public WebElement unsereGasteSagenVerify3;
     @FindBy(css = "[class='owl-dots'] div")
     public List<WebElement> unsereGasteSagenButtonList;
-
 
 
     public WebElement getWebElement(String strElementName) {
