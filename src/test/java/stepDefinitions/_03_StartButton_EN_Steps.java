@@ -4,10 +4,15 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import pages.DialogContent;
 import utilities.ConfigReader;
 import utilities.GWD;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class _03_StartButton_EN_Steps {
 
@@ -72,5 +77,23 @@ public class _03_StartButton_EN_Steps {
 
     @Then("Navigate to the Unsere Göste sagen slideshow located below the information buttons, where user reviews are displayed, and verify.")
     public void navigateToTheUnsereGösteSagenSlideshowLocatedBelowTheInformationButtonsWhereUserReviewsAreDisplayedAndVerify() {
+        List<WebElement> CommentsList = new ArrayList<>(Arrays.asList(dc.unsereGasteSagenVerify1, dc.unsereGasteSagenVerify2, dc.unsereGasteSagenVerify3));
+
+        for (int i = 0; i < CommentsList.size(); i++) {
+            dc.clickFunction(dc.unsereGasteSagenButtonList.get(i));
+            dc.waitUntilVisibilityOf(CommentsList.get(i));
+            System.out.println(CommentsList.get(i).getText());
+            if (i == 0) {
+                Assert.assertTrue(dc.unsereGasteSagenVerify1.getText().contains("Selten wurden wir bei"));
+            } else if (i == 1) {
+                Assert.assertTrue(dc.unsereGasteSagenVerify2.getText().contains("Das Personal war immer sehr"));
+            } else if (i == CommentsList.size() - 1) {
+                Assert.assertTrue(dc.unsereGasteSagenVerify3.getText().contains("Bin hetzt schon das 6"));
+            }else {
+                System.out.printf("Not verify Text");
+            }
+
+        }
     }
-}
+    }
+
