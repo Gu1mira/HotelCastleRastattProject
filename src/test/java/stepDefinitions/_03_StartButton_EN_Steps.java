@@ -26,14 +26,19 @@ public class _03_StartButton_EN_Steps {
 
     @When("Navigate to the slideshow function located at the top of the website and verify.")
     public void navigateToTheSlideshowFunctionLocatedAtTheTopOfTheWebsiteAndVerify() {
+        Assert.assertTrue(dc.slideShow.isDisplayed(),"SlideShow is not visible");
     }
 
     @And("Click on the left arrow button and verify.")
     public void clickOnTheLeftArrowButtonAndVerify() {
+        dc.clickFunction(dc.slideShowLeftButton);
+        Assert.assertTrue(dc.slideShowLeftButton.isDisplayed(), "SlideShow left button is not visible");
     }
 
     @And("Click on the right arrow button and verify.")
     public void clickOnTheRightArrowButtonAndVerify() {
+        Assert.assertTrue(dc.slideShowRightButton.isDisplayed(), "SlideShow right button is not visible");
+        dc.clickFunction(dc.slideShowRightButton);
     }
 
     @When("Navigate to the gretting text located under the slideshow function and verify.")
