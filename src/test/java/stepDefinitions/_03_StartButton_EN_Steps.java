@@ -4,14 +4,24 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.testng.Assert;
+import pages.DialogContent;
+import utilities.ConfigReader;
+import utilities.GWD;
 
 public class _03_StartButton_EN_Steps {
+
+    DialogContent dc = new DialogContent();
+
     @Given("Navigate to the hotel castle rastatt")
     public void navigateToTheHotelCastleRastatt() {
+        GWD.getDriver().get(ConfigReader.getProperty("URL"));
     }
 
     @And("Click and verify the English language button located in the top right corner of the page.")
     public void clickAndVerifyTheEnglishLanguageButtonLocatedInTheTopRightCornerOfThePage() {
+        Assert.assertTrue(dc.englishButton.isDisplayed(), "English button is not visible");
+        dc.clickFunction(dc.englishButton);
     }
 
     @When("Navigate to the slideshow function located at the top of the website and verify.")
