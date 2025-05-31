@@ -43,10 +43,15 @@ public class _03_StartButton_EN_Steps {
 
     @When("Navigate to the gretting text located under the slideshow function and verify.")
     public void navigateToTheGrettingTextLocatedUnderTheSlideshowFunctionAndVerify() {
+        Assert.assertEquals(dc.greetingText.getText(), "WILLKOMMEN BEIM");
     }
 
     @And("Click on the Anfahrt button and verify.")
     public void clickOnTheAnfahrtButtonAndVerify() {
+        Assert.assertTrue(dc.anfahrtButton.isDisplayed(), "Anfahrt button is not visible");
+        dc.clickFunction(dc.anfahrtButton);
+        Assert.assertEquals(dc.anfahrtVerify.getText(), "SO FINDEN SIE UNS");
+        GWD.getDriver().navigate().back();
     }
 
     @And("Click on the Über uns button and verify.")
