@@ -317,6 +317,16 @@ public class DialogContent extends ReusableMethods {
     public WebElement uberUnsVerify;
     @FindBy(css = "[href='https://hotel-castle-rastatt.de/aktivitaeten']")
     public WebElement aktivitaetenButton;
+    @FindBy(xpath = "//h3[text()='Aktivitäten']")
+    public WebElement aktivitaetenVerify;
+    @FindBy(xpath = "(//div[@class='testimonial-content']) [3]")
+    public WebElement unsereGasteSagenVerify1;
+    @FindBy(xpath = "(//div[@class='testimonial-content']) [4]")
+    public WebElement unsereGasteSagenVerify2;
+    @FindBy(xpath = "(//div[@class='testimonial-content']) [5]")
+    public WebElement unsereGasteSagenVerify3;
+    @FindBy(css = "[class='owl-dots'] div")
+    public List<WebElement> unsereGasteSagenButtonList;
 
 
 
