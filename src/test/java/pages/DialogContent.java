@@ -296,6 +296,20 @@ public class DialogContent extends ReusableMethods {
     public WebElement datenschutzLinks;
 
 
+    //US_003_StartButton
+
+    @FindBy(css = "div[class='inner-navigation'] ul img[alt='Englisch']")
+    public WebElement englishButton;
+    @FindBy(css = "[data-source=gallery]")
+    public WebElement slideShow;
+    @FindBy(css = "[style='opacity: 1; transform: translate(30px, -35px); top: 50%; left: 0px;']")
+    public WebElement slideShowLeftButton;
+    @FindBy(css = "[style='opacity: 1; transform: translate(-100px, -35px); top: 50%; left: 100%;']")
+    public WebElement slideShowRightButton;
+    @FindBy(xpath = "//p[text()='WILLKOMMEN BEIM']")
+    public WebElement greetingText;
+
+
 
     public WebElement getWebElement(String strElementName) {
 
