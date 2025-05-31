@@ -56,10 +56,18 @@ public class _03_StartButton_EN_Steps {
 
     @And("Click on the Über uns button and verify.")
     public void clickOnTheÜberUnsButtonAndVerify() {
+        Assert.assertTrue(dc.uberUnsButton.isDisplayed(), "UberUns button is not visible");
+        dc.clickFunction(dc.uberUnsButton);
+        Assert.assertEquals(dc.uberUnsVerify.getText(), "Über uns");
+        GWD.getDriver().navigate().back();
     }
 
     @And("Click on the Aktivitaten uns button and verify.")
     public void clickOnTheAktivitatenUnsButtonAndVerify() {
+        Assert.assertTrue(dc.aktivitaetenButton.isDisplayed(), "Aktivitaeten Button is not visible");
+        dc.clickFunction(dc.aktivitaetenButton);
+        Assert.assertEquals(dc.aktivitaetenVerify.getText(), "Aktivitäten");
+        GWD.getDriver().navigate().back();
     }
 
     @Then("Navigate to the Unsere Göste sagen slideshow located below the information buttons, where user reviews are displayed, and verify.")
