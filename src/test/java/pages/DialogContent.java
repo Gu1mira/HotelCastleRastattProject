@@ -296,6 +296,40 @@ public class DialogContent extends ReusableMethods {
     public WebElement datenschutzLinks;
 
 
+    //US_003_StartButton
+
+    @FindBy(css = "div[class='inner-navigation'] ul img[alt='Englisch']")
+    public WebElement englishButton;
+    @FindBy(css = "[data-source=gallery]")
+    public WebElement slideShow;
+    @FindBy(css = "[style='opacity: 1; transform: translate(30px, -35px); top: 50%; left: 0px;']")
+    public WebElement slideShowLeftButton;
+    @FindBy(css = "[style='opacity: 1; transform: translate(-100px, -35px); top: 50%; left: 100%;']")
+    public WebElement slideShowRightButton;
+    @FindBy(xpath = "//p[text()='WILLKOMMEN BEIM']")
+    public WebElement greetingText;
+    @FindBy(css = "[href='https://hotel-castle-rastatt.de/anfahrt']")
+    public WebElement anfahrtButton;
+    @FindBy(xpath = "//h3[text()='SO FINDEN SIE UNS']")
+    public WebElement anfahrtVerify;
+    @FindBy(css = "[href='https://hotel-castle-rastatt.de/ueber-uns']")
+    public WebElement uberUnsButton;
+    @FindBy(xpath = "//h2[text()='Über uns']")
+    public WebElement uberUnsVerify;
+    @FindBy(css = "[href='https://hotel-castle-rastatt.de/aktivitaeten']")
+    public WebElement aktivitaetenButton;
+    @FindBy(xpath = "//h3[text()='Aktivitäten']")
+    public WebElement aktivitaetenVerify;
+    @FindBy(xpath = "(//div[@class='testimonial-content']) [3]")
+    public WebElement unsereGasteSagenVerify1;
+    @FindBy(xpath = "(//div[@class='testimonial-content']) [4]")
+    public WebElement unsereGasteSagenVerify2;
+    @FindBy(xpath = "(//div[@class='testimonial-content']) [5]")
+    public WebElement unsereGasteSagenVerify3;
+    @FindBy(css = "[class='owl-dots'] div")
+    public List<WebElement> unsereGasteSagenButtonList;
+
+
 
     public WebElement getWebElement(String strElementName) {
 
