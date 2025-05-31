@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -8,13 +9,13 @@ import utilities.ReusableMethods;
 
 import java.util.List;
 
-
 public class DialogContent extends ReusableMethods {
+
     public DialogContent() {
         PageFactory.initElements(GWD.getDriver(), this);
     }
 
-    //US_04_CheckInCheckOutPOM
+    // US_04_CheckInCheckOutPOM
     @FindBy(xpath = "(//*[@id='lang_sel_list']//img)[6]")
     public WebElement englishIcon;
 
@@ -54,7 +55,7 @@ public class DialogContent extends ReusableMethods {
     @FindBy(css = "[class='message_container']")
     public List<WebElement> messageContainer;
 
-    @FindBy(css = "[class='av-left-rooms '] ")
+    @FindBy(css = "[class='av-left-rooms ']")
     public List<WebElement> availableRoom;
 
     @FindBy(css = "[class='spinner_container']")
@@ -63,36 +64,33 @@ public class DialogContent extends ReusableMethods {
     @FindBy(xpath = "(//select[@class='pika-select pika-select-month'])[2]//option")
     public List<WebElement> checkOutMonthNames;
 
-    //_12_Datenschutz_POM
+    // US_12_Datenschutz_POM
     @FindBy(xpath = "//a[text()='Datenschutz']")
     public WebElement datenSchutzClick;
 
     @FindBy(xpath = "//div[@class='entry-content']")
     public WebElement datenschutzerklarungText;
 
-    @FindBy(xpath = "//h2[text()='1. Datenschutz auf einen Blick']")   //1
+    @FindBy(xpath = "//h2[text()='1. Datenschutz auf einen Blick']")
     public WebElement headingPrivacyAtAGlance;
 
-    @FindBy(xpath = "//h2[text()='2. Allgemeine Hinweise und Pflichtinformationen']")  //2
+    @FindBy(xpath = "//h2[text()='2. Allgemeine Hinweise und Pflichtinformationen']")
     public WebElement headingGeneralInfoAndLegalNotice;
 
-    @FindBy(xpath = "//h2[text()='3. Datenerfassung auf unserer Website']")  //3
+    @FindBy(xpath = "//h2[text()='3. Datenerfassung auf unserer Website']")
     public WebElement headingDataCollectionOnWebsite;
 
-    @FindBy(xpath = "//h2[text()='4. Soziale Medien']")         //4
+    @FindBy(xpath = "//h2[text()='4. Soziale Medien']")
     public WebElement headingSocialMedia;
 
-    @FindBy(xpath = "//h2[text()='5. Analyse-Tools und Werbung']")  //5
+    @FindBy(xpath = "//h2[text()='5. Analyse-Tools und Werbung']")
     public WebElement headingAnalyticsAndAds;
 
-    @FindBy(xpath = "//h2[text()='6. Plugins und Tools']")     //6
+    @FindBy(xpath = "//h2[text()='6. Plugins und Tools']")
     public WebElement headingPluginsAndTools;
 
-    @FindBy(xpath = "//h2[text()='7. Zahlungsanbieter und Reseller']") //7
+    @FindBy(xpath = "//h2[text()='7. Zahlungsanbieter und Reseller']")
     public WebElement headingPaymentProvidersAndResellers;
-
-    @FindBy(css = "a[href='https://www.klarna.com/de/datenschutz/']")
-    public WebElement klarnaLink;
 
     @FindBy(xpath = "(//a[contains(@href, '.pdf')])[2]")
     public WebElement klarnaLink2;
@@ -127,13 +125,10 @@ public class DialogContent extends ReusableMethods {
     @FindBy(xpath = "(//a[@href='https://policies.google.com/privacy?hl=de'])[2]")
     public WebElement googlePrivacy2Link;
 
-    @FindBy(xpath = "(//a[@href='https://policies.google.com/privacy?hl=de'])[1]")
-    public WebElement googlePrivacy3Link;
-
     @FindBy(xpath = "(//a[@href='https://de-de.facebook.com/about/privacy/'])[1]")
     public WebElement facebookPrivacyLink;
 
-    @FindBy(xpath = "//a[@href='https://de-de.facebook.com/about/privacy/'])[2]")
+    @FindBy(xpath = "(//a[@href='https://de-de.facebook.com/about/privacy/'])[2]")
     public WebElement facebookPrivacyLink2;
 
     @FindBy(xpath = "(//a[text()='https://instagram.com/about/legal/privacy/'])[2]")
@@ -178,10 +173,10 @@ public class DialogContent extends ReusableMethods {
     @FindBy(xpath = "(//a[@href='https://www.klarna.com/sofort/'])[1]")
     public WebElement klarnaSofort;
 
-    @FindBy(xpath = "(//a[@href='https://www.paydirekt.de/agb/index.html'])")
+    @FindBy(xpath = "(//a[@href='https://www.paydirekt.de/agb/index.html'])[1]")
     public WebElement paydirektLink;
 
-    //US_08_JetztBuchen
+    // US_08_JetztBuchen
     @FindBy(xpath = "(//a[text()='JETZT BUCHEN'])[3]")
     public WebElement jetztBuchenButton;
 
@@ -197,20 +192,28 @@ public class DialogContent extends ReusableMethods {
     @FindBy(css = ".day.past")
     public WebElement dayPast;
 
+    // US06 for location
+
+    @FindBy(xpath = "//a[text()='Anfahrt']")
+    public WebElement anfahrtTab;
+
+    @FindBy(xpath = "//div[@class='textwidget']/p")
+    public WebElement explanatoryText;
+
+    @FindBy(xpath = "//img[@alt='Englisch']")
+    public WebElement englishLanguageIcon;
+
+    By locator = By.xpath("//a[contains(@href, 'google.com/maps')]");
+
 
     public WebElement getWebElement(String strElementName) {
-
         switch (strElementName.trim()) {
-            case "Jetzt Buchen":
-                return this.jetztBuchenButton;
-            case "Search Start Date":
-                return this.startDatePlaceholder;
-            case "Search End Date":
-                return this.endDatePlaceholder;
-            case "datePicker":
-                return this.datePicker;
-
+            case "Jetzt Buchen": return jetztBuchenButton;
+            case "Search Start Date": return startDatePlaceholder;
+            case "Search End Date": return endDatePlaceholder;
+            case "datePicker": return datePicker;
+            default:
+                throw new IllegalArgumentException("Element not found: " + strElementName);
         }
-        return null;
     }
 }
