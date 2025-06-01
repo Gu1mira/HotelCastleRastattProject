@@ -26,10 +26,13 @@ public class GWD {
 
         if (threadDriver.get() == null) {
             String browser = threadBrowserName.get();
-            if (browser == null) {
+            if (browser == null || browser.isEmpty()) {
                 browser = ConfigReader.getProperty("browser");
-                threadBrowserName.set(browser);
             }
+            if (browser == null || browser.isEmpty()) {
+                browser = "chrome"; // fallback default
+            }
+            threadBrowserName.set(browser.toLowerCase());
 
             switch (browser.toLowerCase()) {
                 case "firefox":
@@ -41,6 +44,7 @@ public class GWD {
                 case "chrome":
                     threadDriver.set(setChromeOptions(language));
                     break;
+                default:threadDriver.set(new ChromeDriver());break;
             }
             threadDriver.get().manage().window().maximize();
             threadDriver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(ConfigReader.getIntProperty("pageLoadTimeout")));
