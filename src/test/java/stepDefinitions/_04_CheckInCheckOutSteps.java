@@ -28,7 +28,7 @@ public class _04_CheckInCheckOutSteps {
     int lastDayOfMonth = currentMonth.lengthOfMonth();
     int randomCheckInDate = (int) (Math.random() * (lastDayOfMonth - dayOfMonth + 1)) + dayOfMonth;
     List<Integer> checkOutPreviousDays = new ArrayList<>();
-    int randomCheckOutDate = (int) (Math.random() * (lastDayOfMonth - randomCheckInDate)) + randomCheckInDate+1;
+    int randomCheckOutDate = (int) (Math.random() * (lastDayOfMonth - randomCheckInDate)) + randomCheckInDate + 1;
     String randomCheckInDateStr = String.valueOf(randomCheckInDate);
     String randomCheckOutDateStr = String.valueOf(randomCheckOutDate);
     String checkInDate = String.format("%02d", Integer.parseInt(randomCheckInDateStr))
@@ -77,9 +77,13 @@ public class _04_CheckInCheckOutSteps {
 
         for (int i = 0; i < dc.checkIndateList.size(); i++) {
 
-            if (checkInPreviousDay.get(i) < dayOfMonth) {
+            if (dc.checkIndateList.get(i).getText().equals(dayOfMont)) {
                 dc.wait.until(ExpectedConditions.visibilityOf(dc.checkIndateList.get(i)));
-                Assert.assertEquals(dc.checkIndateList.get(i).getAttribute("class"), "is-disabled");
+                Assert.assertEquals(dc.checkIndateList.get(i).getAttribute("class"), "is-today is-selected");
+                break;
+            } else if (checkInPreviousDay.get(i) < dayOfMonth) {
+                dc.wait.until(ExpectedConditions.visibilityOf(dc.checkIndateList.get(i)));
+                Assert.assertEquals(dc.checkIndateList.get(i - 1).getAttribute("class"), "is-disabled");
                 break;
             }
         }
@@ -139,7 +143,7 @@ public class _04_CheckInCheckOutSteps {
 
                 if (checkOutPreviousDays.get(i) < randomCheckInDate) {
                     dc.wait.until(ExpectedConditions.visibilityOf(dc.checkOutdateList.get(i)));
-                    Assert.assertEquals(dc.checkOutdateList.get(i).getAttribute("class"), "is-disabled");
+                    Assert.assertEquals(dc.checkOutdateList.get(i - 1).getAttribute("class"), "is-disabled");
                     break;
                 }
             }
@@ -156,13 +160,13 @@ public class _04_CheckInCheckOutSteps {
 
     @And("The customer enters  the check-out date")
     public void theCustomerEntersTheCheckOutDate() {
-        if (randomCheckInDate==lastDayOfMonth) {
-            int nextCheckOutRandom = (int) (Math.random() *(lastDayOfMonth))+1;
+        if (randomCheckInDate == lastDayOfMonth) {
+            int nextCheckOutRandom = (int) (Math.random() * (lastDayOfMonth)) + 1;
             nextCheckOutRandomStr = String.valueOf(nextCheckOutRandom);
             nextCheckOutDate = String.format("%02d", Integer.parseInt(nextCheckOutRandomStr))
                     + "/" + String.format("%02d", today.plusMonths(1).getMonthValue())
                     + "/" + year;
-            dc.clickFunction(dc.checkOutdateList.get(nextCheckOutRandom-1));
+            dc.clickFunction(dc.checkOutdateList.get(nextCheckOutRandom - 1));
 
         } else {
             System.out.println(randomCheckOutDate);
@@ -183,11 +187,11 @@ public class _04_CheckInCheckOutSteps {
         dc.wait.until(ExpectedConditions.attributeToBe(dc.checkInWidget, "value", checkInDate));
         Assert.assertEquals(dc.checkInWidget.getAttribute("value"), checkInDate);
 
-        if (randomCheckInDate==lastDayOfMonth){
-            dc.wait.until(ExpectedConditions.attributeToBe(dc.checkOutWidget,"value",nextCheckOutDate));
+        if (randomCheckInDate == lastDayOfMonth) {
+            dc.wait.until(ExpectedConditions.attributeToBe(dc.checkOutWidget, "value", nextCheckOutDate));
             Assert.assertEquals(dc.checkOutWidget.getAttribute("value"), nextCheckOutDate);
             System.out.println(nextCheckOutDate);
-        }else {
+        } else {
             dc.wait.until(ExpectedConditions.attributeToBe(dc.checkOutWidget, "value", checkOutDate));
             Assert.assertEquals(dc.checkOutWidget.getAttribute("value"), checkOutDate);
         }
