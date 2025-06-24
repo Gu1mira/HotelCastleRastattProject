@@ -50,4 +50,9 @@ public class _02_Headers_EN_Steps {
     public void theCustomerClicksActivitiesButton() {
         hd.clickFunction(hd.activitiesBtn);
     }
+
+    @Then("The customer should see the Activities text on the Activities page")
+    public void theCustomerShouldSeeTheActivitiesTextOnTheActivitiesPage() {
+        Assert.assertEquals(dc2.txtOurHotel.getText().contains("Activities"), false);
+    }
 }

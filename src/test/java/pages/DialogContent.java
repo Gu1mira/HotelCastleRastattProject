@@ -304,6 +304,9 @@ public class DialogContent extends ReusableMethods {
     @FindBy(xpath = "//p[contains(text(), 'located')]")
     public WebElement txtLocation;
 
+    @FindBy(xpath = "//h3[text()='OUR HOTEL']")
+    public WebElement txtOurHotel;
+
 
 
 
