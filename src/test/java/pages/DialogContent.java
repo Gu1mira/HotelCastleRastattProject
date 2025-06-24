@@ -295,6 +295,20 @@ public class DialogContent extends ReusableMethods {
     @FindBy(xpath = "//p[text()='Check-in']")
     public WebElement txtJetztBuchen;
 
+    @FindBy(xpath = "//h3[text()='HOTEL CASTLE RASTATT']")
+    public WebElement txtHotelRastattEn;
+
+    @FindBy(xpath = "//li[text()='Satellite and cable TV']")
+    public WebElement txtAboutUs;
+
+    @FindBy(xpath = "//p[contains(text(), 'located')]")
+    public WebElement txtLocation;
+
+    @FindBy(xpath = "//h3[text()='OUR HOTEL']")
+    public WebElement txtOurHotel;
+
+
+
 
     @FindBy(xpath = "(//*[@id='lang_sel_list']//li//img)[5]")
     public WebElement germanIcon;
