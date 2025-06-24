@@ -1,4 +1,5 @@
-Feature: Headers
+Feature: Navigation between header links
+
 
   Scenario: Headers button functionality
     Given Navigate to the Hotel Castle Rastatt
