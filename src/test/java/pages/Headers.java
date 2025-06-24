@@ -28,6 +28,9 @@ public class Headers extends ReusableMethods {
     @FindBy(xpath = "(//a[text()=' 07222 1590750'])[3]")
     public WebElement phoneNumber;
 
+    @FindBy(xpath = "(//a[text()='HOME'])[3]")
+    public WebElement homeBtn;
+
     //US_08_Book_Now
     @FindBy(xpath = "(//a[text()='JETZT BUCHEN'])[3]")
     public WebElement jetztBuchenButton;
