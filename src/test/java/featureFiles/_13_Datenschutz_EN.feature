@@ -6,5 +6,5 @@ Feature:  Privacy Policy Page Verification in English
       When The customer click  on the english language icon
       And The user spots the Datenschutz link in the footer, clicks it
       Then The URL should contain datenschutzerklaerung
-      When the user clicks on all active links
-      Then the user verifies redirection to correct webpages
+      When The user clicks on all active links and opens them one by one
+      Then The user verifies redirection to correct webpages
