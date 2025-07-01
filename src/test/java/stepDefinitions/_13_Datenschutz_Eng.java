@@ -26,7 +26,7 @@ public class _13_Datenschutz_Eng {
         String originalWindow = driver.getWindowHandle();
 
 
-        for (int i = 45; i <= 67 && i < anchorElements.size(); i++) {
+        for (int i = 47; i <= 70 && i < anchorElements.size(); i++) {
             try {
                 WebElement anchor  = anchorElements.get(i);
                 String linkHref = anchor.getAttribute("href");
