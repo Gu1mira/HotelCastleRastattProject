@@ -353,6 +353,21 @@ public class DialogContent extends ReusableMethods {
     @FindBy(css = "[class='owl-dots'] div")
     public List<WebElement> unsereGasteSagenButtonList;
 
+    //US_005_UberUns
+    @FindBy(xpath ="(//*[@id='lang_sel_list']//img)[5]" )
+    public WebElement DeutschButton;
+    @FindBy (xpath = "(//a[text()='Über uns'])[3]")
+    public WebElement UberUnsButton;
+    @FindBy (xpath = "//span[@class='icon-prev']")
+    public WebElement leftIcon;
+    @FindBy(xpath = "//a[@class='vc_left vc_carousel-control']")
+    public WebElement rightIcon;
+    @FindBy(xpath = "//h3[text()='UNSER HOTEL']")
+    public WebElement unserHotelText;
+    @FindBy (xpath = "//h2[text()='Über uns']")
+    public WebElement uberUnsText;
+    @FindBy (xpath = "//h3[text()='About Hotel']")
+    public  WebElement aboutHotel;
 
     public WebElement getWebElement(String strElementName) {
 
