@@ -384,4 +384,15 @@ public class DialogContent extends ReusableMethods {
         }
         return null;
     }
+
+    //US_14_DE_HOTEL_ROOM_SELECTION_AND_BOOKİNG_PROCESS
+
+    @FindBy(xpath = "//*[text()='Suchen']")
+    public WebElement suchenButton;
+    @FindBy(css="[name='search_start_date']")
+    public WebElement checkInPLc;
+    @FindBy(css="[name='search_end_date']")
+    public WebElement checkOutPLc;
+    @FindBy(css = "[class=\"av_wrapper\"]:not([style*='display: none']) [aria-label*=\"Maximale Belegung\"]")
+    public List<WebElement> maximaleBelegungList;
 }
