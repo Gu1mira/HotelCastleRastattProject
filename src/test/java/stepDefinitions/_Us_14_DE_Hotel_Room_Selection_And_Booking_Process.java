@@ -19,15 +19,23 @@ public class _Us_14_DE_Hotel_Room_Selection_And_Booking_Process {
 
     @When("The customer click JetztBuchen button")
     public void theCustomerClickJetztBuchenButton() {
+
         dc.clickFunction(dc.jetztBuchenButton);
     }
 
     @And("The customer enters checkin and checkout dates")
     public void theCustomerEntersCheckinAndCheckoutDates() {
+
+        dc.clickFunction(dc.checkInPLc);
+        dc.pressCtrlA();
+        dc.checkInPLc.sendKeys(checkIndate);
+        dc.tabKeyMultiplePress(1);
+        dc.checkOutPLc.sendKeys(checkOutDate);
     }
 
     @And("The customer click suchen button")
     public void theCustomerClickSuchenButton() {
+        dc.clickFunction(dc.suchenButton);
     }
 
     @When("The customer chooses the number of adults,chilren,and rooms")
