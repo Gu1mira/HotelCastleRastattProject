@@ -395,4 +395,19 @@ public class DialogContent extends ReusableMethods {
     public WebElement checkOutPLc;
     @FindBy(css = "[class=\"av_wrapper\"]:not([style*='display: none']) [aria-label*=\"Maximale Belegung\"]")
     public List<WebElement> maximaleBelegungList;
+    @FindBy(css="[class=\"av-room-options\"] [class=\"btn-group bootstrap-select adults_select\"]")
+    public List<WebElement> ErwachseneList;
+    @FindBy(css="[class=\"av-room-options\"] [class=\"btn-group bootstrap-select children_select\"]")
+    public List<WebElement> KinderList;
+    @FindBy(css="[class=\"btn-group bootstrap-select rooms_select\"] [class=\"filter-option pull-left\"]")
+    public List<WebElement> ZimmerList;
+    @FindBy(css="[class=\"btn-group bootstrap-select adults_select open\"] [class=\"text\"]")
+    public List<WebElement> ErwachseneSelect;
+    @FindBy(css="[class=\"btn-group bootstrap-select children_select open\"] [class=\"text\"]")
+    public List<WebElement> KinderSelect;
+    @FindBy(css="[class=\"btn-group bootstrap-select rooms_select open\"] [class=\"text\"]")
+    public List<WebElement> ZimmerSelect;
+
+
+
 }
