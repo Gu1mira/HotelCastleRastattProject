@@ -407,6 +407,18 @@ public class DialogContent extends ReusableMethods {
     public List<WebElement> KinderSelect;
     @FindBy(css="[class=\"btn-group bootstrap-select rooms_select open\"] [class=\"text\"]")
     public List<WebElement> ZimmerSelect;
+    @FindBy(css="[class=\"btn-group bootstrap-select children_select\"] [class=\"filter-option pull-left\"]")
+    public List<WebElement> KinderText;
+    @FindBy(css="[class=\"btn-group bootstrap-select adults_select\"] [class=\"filter-option pull-left\"]")
+    public List<WebElement> ErwachseneText;
+    @FindBy(css="[class=\"btn-group bootstrap-select rooms_select\"] [class=\"filter-option pull-left\"]")
+    public List<WebElement> ZimmerText;
+    @FindBy(css="[class=\"av-name\"]:not([aria-label*=\"Economy\"])")
+    public List<WebElement> roomName;
+    @FindBy(css="[class=\"av-rate-price \"]")
+    public List<WebElement>roomPrice;
+    @FindBy(css="[class='selected_rooms_price']")
+    public WebElement roomTotalPrice;
 
 
 
