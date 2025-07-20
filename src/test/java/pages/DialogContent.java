@@ -369,6 +369,35 @@ public class DialogContent extends ReusableMethods {
     @FindBy (xpath = "//h3[text()='About Hotel']")
     public  WebElement aboutHotel;
 
+    // US06 for location
+
+    @FindBy(xpath = "//a[text()='Anfahrt']")
+    public WebElement anfahrtTab;
+
+    @FindBy(xpath = "//div[@class='textwidget']/p")
+    public WebElement explanatoryText;
+
+    @FindBy(xpath = "//img[@alt='Englisch']")
+    public WebElement englishLanguageIcon;
+
+
+    //US_011_for locator
+    @FindBy(xpath = "//a[@href='https://hotel-castle-rastatt.de/impressum' and contains(@class, 'tc-menu-inner')]")
+    public WebElement impressumLink;
+
+    @FindBy(xpath = "//p[normalize-space()='Cemil Beyaz Hotel Castle Niederwaldstr. 2/2 76437 Rastatt']")
+    public WebElement explanatoryText2;
+
+    @FindBy(xpath = "//p[normalize-space()='VAT Id number according to Sec. 27 a German Value Added Tax Act: DE313706664']")
+    public WebElement vatInfo;
+
+    @FindBy(xpath = "//a[@href='https://ec.europa.eu/consumers/odr']")
+    public WebElement odrLink;
+
+    @FindBy(css = "a[href='https://papernow.org/']")
+    public WebElement essayWritersLink;
+
+
     public WebElement getWebElement(String strElementName) {
 
         switch (strElementName.trim()) {
@@ -383,5 +412,6 @@ public class DialogContent extends ReusableMethods {
 
         }
         return null;
+
     }
 }
