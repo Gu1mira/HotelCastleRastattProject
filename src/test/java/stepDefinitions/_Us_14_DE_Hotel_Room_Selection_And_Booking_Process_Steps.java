@@ -3,6 +3,7 @@ package stepDefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.testng.Assert;
 import pages.DialogContent;
 
 public class _Us_14_DE_Hotel_Room_Selection_And_Booking_Process_Steps {
@@ -64,6 +65,38 @@ public class _Us_14_DE_Hotel_Room_Selection_And_Booking_Process_Steps {
 
     @Then("The Customer verifies adult and child choices with information on the maximum number of rooms")
     public void theCustomerVerifiesAdultAndChildChoicesWithInformationOnTheMaximumNumberOfRooms() {
+
+        int erwachseneFirstPartInt = 0;
+        int erwachseneInt = 0;
+        int kinderFirstPartInt = 0;
+        int kinderInt = 0;
+        int maximaleBelegung = 0;
+        int total = 0;
+
+        maximaleBelegung = Integer.parseInt(dc.maximaleBelegungList.get(randomRoom).getText());
+
+        if (dc.ErwachseneText.get(randomRoom).getText().contains("+€")) {
+            String erwachseneStr = dc.ErwachseneText.get(randomRoom).getText().replaceAll("[^0-9,.]", "").replace(",", ".");
+            String erwachseneFirstPart = erwachseneStr.substring(0, 1);
+            erwachseneFirstPartInt = Integer.parseInt(erwachseneFirstPart);
+
+        } else {
+            erwachseneInt = Integer.parseInt(dc.ErwachseneText.get(randomRoom).getText());
+        }
+
+        if (dc.KinderText.get(randomRoom).getText().contains("+€")) {
+            String kinderStr = dc.KinderText.get(randomRoom).getText().replaceAll("[^0-9,.]", "").replace(",", ".");
+            String kinderFirstPart = kinderStr.substring(0, 1);
+            kinderFirstPartInt = Integer.parseInt(kinderFirstPart);
+
+        } else {
+            kinderInt = Integer.parseInt(dc.KinderText.get(randomRoom).getText());
+        }
+
+        total = erwachseneFirstPartInt + erwachseneInt + kinderFirstPartInt + kinderInt;
+        Assert.assertTrue(maximaleBelegung >= total);
+
+        dc.wait(5);
     }
 
     @Then("The Customer chooses the number of rooms and verify")
