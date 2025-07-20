@@ -397,6 +397,42 @@ public class DialogContent extends ReusableMethods {
     @FindBy(css = "a[href='https://papernow.org/']")
     public WebElement essayWritersLink;
 
+    //US_14_DE_HOTEL_ROOM_SELECTION_AND_BOOKİNG_PROCESS
+
+    @FindBy(xpath = "//*[text()='Suchen']")
+    public WebElement suchenButton;
+    @FindBy(css="[name='search_start_date']")
+    public WebElement checkInPLc;
+    @FindBy(css="[name='search_end_date']")
+    public WebElement checkOutPLc;
+    @FindBy(css = "[class=\"av_wrapper\"]:not([style*='display: none']) [aria-label*=\"Maximale Belegung\"]")
+    public List<WebElement> maximaleBelegungList;
+    @FindBy(css="[class=\"av-room-options\"] [class=\"btn-group bootstrap-select adults_select\"]")
+    public List<WebElement> ErwachseneList;
+    @FindBy(css="[class=\"av-room-options\"] [class=\"btn-group bootstrap-select children_select\"]")
+    public List<WebElement> KinderList;
+    @FindBy(css="[class=\"btn-group bootstrap-select rooms_select\"] [class=\"filter-option pull-left\"]")
+    public List<WebElement> ZimmerList;
+    @FindBy(css="[class=\"btn-group bootstrap-select adults_select open\"] [class=\"text\"]")
+    public List<WebElement> ErwachseneSelect;
+    @FindBy(css="[class=\"btn-group bootstrap-select children_select open\"] [class=\"text\"]")
+    public List<WebElement> KinderSelect;
+    @FindBy(css="[class=\"btn-group bootstrap-select rooms_select open\"] [class=\"text\"]")
+    public List<WebElement> ZimmerSelect;
+    @FindBy(css="[class=\"btn-group bootstrap-select children_select\"] [class=\"filter-option pull-left\"]")
+    public List<WebElement> KinderText;
+    @FindBy(css="[class=\"btn-group bootstrap-select adults_select\"] [class=\"filter-option pull-left\"]")
+    public List<WebElement> ErwachseneText;
+    @FindBy(css="[class=\"btn-group bootstrap-select rooms_select\"] [class=\"filter-option pull-left\"]")
+    public List<WebElement> ZimmerText;
+    @FindBy(css="[class=\"av-name\"]:not([aria-label*=\"Economy\"])")
+    public List<WebElement> roomName;
+    @FindBy(css="[class=\"av-rate-price \"]")
+    public List<WebElement>roomPrice;
+    @FindBy(css="[class='selected_rooms_price']")
+    public WebElement roomTotalPrice;
+
+
 
     public WebElement getWebElement(String strElementName) {
 

@@ -338,4 +338,18 @@ public class ReusableMethods {
         wait.until(ExpectedConditions.numberOfWindowsToBe(numberOfWindows));
     }
 
+    public static void pressCtrlA() {
+        try {
+            Robot robot = new Robot();
+
+            robot.keyPress(KeyEvent.VK_CONTROL);
+            robot.keyPress(KeyEvent.VK_A);
+            robot.keyRelease(KeyEvent.VK_A);
+            robot.keyRelease(KeyEvent.VK_CONTROL);
+
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
