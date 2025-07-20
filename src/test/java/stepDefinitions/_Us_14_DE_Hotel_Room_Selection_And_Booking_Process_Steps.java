@@ -101,5 +101,33 @@ public class _Us_14_DE_Hotel_Room_Selection_And_Booking_Process_Steps {
 
     @Then("The Customer chooses the number of rooms and verify")
     public void theCustomerChoosesTheNumberOfRoomsAndVerify() {
+
+        double roomTotalPriceText = Double.parseDouble(dc.roomTotalPrice.getText().replaceAll("[^0-9.,]", "").replace(".", "").replace(",", "."));
+
+        if (dc.roomName.get(randomRoom).getText().equals("Einzelzimmer Standard")) {
+            int textA = Integer.parseInt(dc.ZimmerText.get(0).getText());
+            double priceA = Double.parseDouble(dc.roomPrice.get(0).getText().replaceAll("[^0-9,.]", "").replace(",", "."));
+            double totalPriceA = (holidayDayNumber * textA * priceA);
+            Assert.assertEquals(totalPriceA, roomTotalPriceText, "Fiyat Doğru Değil");
+        } else if (dc.roomName.get(randomRoom).getText().equals("Doppelzimmer Standard")) {
+            int textB = Integer.parseInt(dc.ZimmerText.get(1).getText());
+            double priceB = Double.parseDouble(dc.roomPrice.get(1).getText().replaceAll("[^0-9,.]", "").replace(",", "."));
+            double totalPriceB = (holidayDayNumber * textB * priceB);
+            Assert.assertEquals(totalPriceB, roomTotalPriceText, "Fiyat Doğru Değil");
+        } else if (dc.roomName.get(randomRoom).getText().equals("Doppelzimmer Komfort")) {
+            int textC = Integer.parseInt(dc.ZimmerText.get(2).getText());
+            double priceC = Double.parseDouble(dc.roomPrice.get(2).getText().replaceAll("[^0-9,.]", "").replace(",", "."));
+            double totalPriceC = holidayDayNumber * textC * priceC;
+            Assert.assertEquals(totalPriceC, roomTotalPriceText, "Fiyat Doğru Değil");
+        } else if (dc.roomName.get(randomRoom).getText().equals("Familien Suite (Dreibettzimmer)")) {
+            int textD = Integer.parseInt(dc.ZimmerText.get(3).getText());
+            double priceD = Double.parseDouble(dc.roomPrice.get(3).getText().replaceAll("[^0-9,.]", "").replace(",", "."));
+            double totalPriceD = (holidayDayNumber * textD * priceD);
+            Assert.assertEquals(totalPriceD, roomTotalPriceText, "Fiyat Doğru Değil");
+        }
+
+        System.out.println(roomTotalPriceText);
+
+    }
     }
 }
