@@ -19,7 +19,7 @@ public class _Us_14_DE_Hotel_Room_Selection_And_Booking_Process_Steps {
 
     @When("The customer click JetztBuchen button")
     public void theCustomerClickJetztBuchenButton() {
-        dc.clickFunction(dc.jetztBuchenButton);
+        dc.clickFunction(dc.jetztBuchennButton);
     }
 
     @And("The customer enters checkin and checkout dates")

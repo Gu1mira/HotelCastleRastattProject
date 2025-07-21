@@ -415,6 +415,8 @@ public class DialogContent extends ReusableMethods {
 
     //US_14_DE_HOTEL_ROOM_SELECTION_AND_BOOKİNG_PROCESS
 
+    @FindBy(xpath = "//*[@id='general-info']/div/a")
+    public WebElement jetztBuchennButton;
     @FindBy(xpath = "//*[text()='Suchen']")
     public WebElement suchenButton;
     @FindBy(css="[name='search_start_date']")
