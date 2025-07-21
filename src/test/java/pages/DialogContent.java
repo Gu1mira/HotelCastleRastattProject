@@ -248,8 +248,6 @@ public class DialogContent extends ReusableMethods {
     public WebElement paydirektLink;
 
     //US_08_JetztBuchen
-    @FindBy(xpath = "(//a[text()='JETZT BUCHEN'])[3]")
-    public WebElement jetztBuchenButton;
 
 //    @FindBy(xpath = "input[placeholder='-']")
 //    List<WebElement> placeholders;
@@ -260,23 +258,41 @@ public class DialogContent extends ReusableMethods {
     // ⚠️ WebElement'leri constructor dışında List.get(0) gibi ifadelerle doğrudan initialize etme.
     // Çünkü @FindBy anotasyonları PageFactory.initElements() çağrılmadan önce çalışmaz.
 
-    @FindBy(xpath = "//*[@id='rooms-search-form']/div[1]/div[1]/div[2]/div[1]/input")
-    public WebElement startDatePlaceholder;
+     @FindBy(xpath = "//*[@id='rooms-search-form']/div[1]/div[1]/div[2]/div[1]/input")
+    public WebElement checkInDateInput;
 
     @FindBy(xpath = "//*[@id='rooms-search-form']/div[1]/div[2]/div[2]/div[1]/input")
-    public WebElement endDatePlaceholder;
+    public WebElement checkOutDateInput;
 
-    @FindBy(css = "div.calendar-container")
+    //@FindBy(xpath = "//*[@id='rooms-search-form']/div[2]/button")
+    //public WebElement suchenButton;
+
+    @FindBy(css = "div.vc-container")
     public WebElement datePicker;
 
-    @FindBy(xpath = "//div[contains(@class,'day') and not(contains(@class,'disabled'))]//p")
-    public List<WebElement> enabledDays;  // Seçilebilir günlerin <p> tag'larındaki sayılar
+    @FindBy(css = "div.vc-day.is-today")
+    public WebElement today;
 
-    @FindBy(css = "div.day.endDate.ui-state-checkout")
+    @FindBy(css = "div.vc-day.is-selected")
     public WebElement selectedDay;
 
-    @FindBy(xpath = "//*[@id='rooms-search-form']/div[3]/div/div/div/div[1]/div[1]/div[2]/div/div/div[2]/div[2]")
-    public WebElement arrow;
+    @FindBy(css = "div.vc-day.is-disabled")
+    public WebElement disabledDays;
+
+    @FindBy(css = "div.vc-day.is-not-in-month")
+    public WebElement notInMonthDays;
+
+    @FindBy(css = "div.vc-day:not(.is-disabled):not(.is-not-in-month)")
+    public WebElement enabledDays;
+
+    @FindBy(xpath = "//*[@id='wizard-container']/div[2]/div[2]/div[1]/div[4]/div[1]/div[1]/div[2]/div[4]/div/div[3]/div/div/button")
+    public WebElement zimmer;
+
+    @FindBy(xpath = "//*[@id='wizard-container']/div[2]/div[2]/div[1]/div[4]/div[1]/div[1]/div[2]/div[4]/div/div[3]/div/div/div/ul/li[2]")
+    public WebElement zimmerPlus;
+
+    @FindBy(xpath = "//*[@id='general-info']/div/a")
+    public WebElement jetztBuchenButton;
 
     // _02_Headers sayfa içi POM
 
@@ -439,13 +455,12 @@ public class DialogContent extends ReusableMethods {
         switch (strElementName.trim()) {
             case "Jetzt Buchen":
                 return this.jetztBuchenButton;
-            case "Search Start Date":
-                return this.startDatePlaceholder;
-            case "Search End Date":
-                return this.endDatePlaceholder;
             case "datePicker":
                 return this.datePicker;
-
+            case "Search Start Date":
+                return this.checkInDateInput;
+            case "Search End Date":
+                return this.checkOutDateInput;
         }
         return null;
 
