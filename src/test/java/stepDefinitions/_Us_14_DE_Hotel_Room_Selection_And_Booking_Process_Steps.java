@@ -47,6 +47,7 @@ public class _Us_14_DE_Hotel_Room_Selection_And_Booking_Process_Steps {
         dc.clickFunction(dc.ErwachseneList.get(randomRoom));
         dc.clickFunction(dc.ErwachseneSelect.get(dc.randomGenerator(dc.ErwachseneSelect.size())));
         dc.clickFunction(dc.KinderList.get(randomRoom));
+        dc.wait.until(ExpectedConditions.visibilityOfAllElements(dc.KinderSelect));
         dc.jsClick(dc.KinderSelect.get(dc.randomGenerator(dc.KinderSelect.size())));
 
         dc.jsClick(dc.ZimmerList.get(randomRoom));
@@ -57,8 +58,8 @@ public class _Us_14_DE_Hotel_Room_Selection_And_Booking_Process_Steps {
             int b = Integer.parseInt(dc.availableRoom.get(1).getText().replaceAll("[^0-9,.]", ""));
             dc.clickFunction(dc.ZimmerSelect.get((int) (Math.random() * b) + 1));
         } else if (dc.roomName.get(randomRoom).getText().equals("Doppelzimmer Komfort")) {
+            dc.waitUntilVisibilityOf(dc.ZimmerSelect.getFirst());
             dc.clickFunction(dc.ZimmerSelect.get((int) (Math.random() * 10) + 1));
-            System.out.println(dc.ZimmerSelect.get((int) (Math.random() * 10) + 1).getText());
         } else if (dc.roomName.get(randomRoom).getText().equals("Familien Suite (Dreibettzimmer)")) {
             int c = Integer.parseInt(dc.availableRoom.get(2).getText().replaceAll("[^0-9,.]", ""));
             dc.clickFunction(dc.ZimmerSelect.get((int) (Math.random() * c) + 1));
@@ -138,7 +139,7 @@ public class _Us_14_DE_Hotel_Room_Selection_And_Booking_Process_Steps {
             if (dc.KinderText.get(randomRoom).getText().contains("+€")) {
                 String kinderStr = dc.KinderText.get(randomRoom).getText().replaceAll("[^0-9,.]", "").replace(",", ".");
                 String kinderPricePart = kinderStr.substring(1);
-                kinderPricePartDouble = Integer.parseInt(kinderPricePart);
+                kinderPricePartDouble = Double.parseDouble(kinderPricePart);
 
             }
             int textC = Integer.parseInt(dc.ZimmerText.get(2).getText());
