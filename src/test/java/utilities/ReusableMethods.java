@@ -14,6 +14,8 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -350,6 +352,16 @@ public class ReusableMethods {
         } catch (AWTException e) {
             e.printStackTrace();
         }
+    }
+
+
+    public String dateCreate(int day){
+        LocalDate threeMonthsLater = LocalDate.now().plusMonths(3);
+        int maxDay = threeMonthsLater.lengthOfMonth();
+        int inputDay = Math.min(day,maxDay);
+        LocalDate targetedDay = LocalDate.of(threeMonthsLater.getYear(),threeMonthsLater.getMonthValue(),inputDay);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy");
+        return targetedDay.format(formatter);
     }
 
 }

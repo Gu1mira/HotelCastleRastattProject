@@ -291,7 +291,7 @@ public class DialogContent extends ReusableMethods {
     @FindBy(xpath = "//*[@id='wizard-container']/div[2]/div[2]/div[1]/div[4]/div[1]/div[1]/div[2]/div[4]/div/div[3]/div/div/div/ul/li[2]")
     public WebElement zimmerPlus;
 
-    @FindBy(xpath = "//*[@id='general-info']/div/a")
+    @FindBy(linkText = "JETZT BUCHEN")
     public WebElement jetztBuchenButton;
 
     // _02_Headers sayfa içi POM
