@@ -3,6 +3,7 @@ package stepDefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import pages.DialogContent;
 
@@ -10,9 +11,9 @@ public class _Us_14_DE_Hotel_Room_Selection_And_Booking_Process_Steps {
 
     DialogContent dc = new DialogContent();
 
-    String checkIndate = "20092025";
+    String checkIndate = dc.dateCreate(1);
     int checkInDay = Integer.parseInt(checkIndate.substring(0, 2));
-    String checkOutDate = "27092025";
+    String checkOutDate = dc.dateCreate(8);
     int checkOutDay = Integer.parseInt(checkOutDate.substring(0, 2));
     int holidayDayNumber = (checkOutDay - checkInDay);
     int randomRoom;
@@ -22,7 +23,7 @@ public class _Us_14_DE_Hotel_Room_Selection_And_Booking_Process_Steps {
         dc.clickFunction(dc.jetztBuchenButton);
     }
 
-    @And("The customer enters checkin and checkout dates")
+    @And("The customer enters check in and checkout dates")
     public void theCustomerEntersCheckinAndCheckoutDates() {
 
         dc.clickFunction(dc.checkInPLc);
@@ -37,10 +38,10 @@ public class _Us_14_DE_Hotel_Room_Selection_And_Booking_Process_Steps {
         dc.clickFunction(dc.suchenButton);
     }
 
-    @When("The customer chooses the number of adults,chilren,and rooms")
-    public void theCustomerChoosesTheNumberOfAdultsChilrenAndRooms() {
+    @When("The customer chooses the number of adults,children,and rooms")
+    public void theCustomerChoosesTheNumberOfAdultsChildrenAndRooms() {
 
-        dc.wait(3);
+        dc.wait.until(ExpectedConditions.attributeToBe(dc.spinnerContainer, "style", "display: none;"));
         randomRoom = dc.randomGenerator(dc.maximaleBelegungList.size());
 
         dc.clickFunction(dc.ErwachseneList.get(randomRoom));
@@ -57,6 +58,7 @@ public class _Us_14_DE_Hotel_Room_Selection_And_Booking_Process_Steps {
             dc.clickFunction(dc.ZimmerSelect.get((int) (Math.random() * b) + 1));
         } else if (dc.roomName.get(randomRoom).getText().equals("Doppelzimmer Komfort")) {
             dc.clickFunction(dc.ZimmerSelect.get((int) (Math.random() * 10) + 1));
+            System.out.println(dc.ZimmerSelect.get((int) (Math.random() * 10) + 1).getText());
         } else if (dc.roomName.get(randomRoom).getText().equals("Familien Suite (Dreibettzimmer)")) {
             int c = Integer.parseInt(dc.availableRoom.get(2).getText().replaceAll("[^0-9,.]", ""));
             dc.clickFunction(dc.ZimmerSelect.get((int) (Math.random() * c) + 1));
@@ -96,11 +98,13 @@ public class _Us_14_DE_Hotel_Room_Selection_And_Booking_Process_Steps {
         total = erwachseneFirstPartInt + erwachseneInt + kinderFirstPartInt + kinderInt;
         Assert.assertTrue(maximaleBelegung >= total);
 
-        dc.wait(5);
+
     }
 
     @Then("The Customer chooses the number of rooms and verify")
     public void theCustomerChoosesTheNumberOfRoomsAndVerify() {
+        double erwachsenePricePartDouble = 0;
+        double kinderPricePartDouble = 0;
 
         double roomTotalPriceText = Double.parseDouble(dc.roomTotalPrice.getText().replaceAll("[^0-9.,]", "").replace(".", "").replace(",", "."));
 
@@ -108,22 +112,44 @@ public class _Us_14_DE_Hotel_Room_Selection_And_Booking_Process_Steps {
             int textA = Integer.parseInt(dc.ZimmerText.get(0).getText());
             double priceA = Double.parseDouble(dc.roomPrice.get(0).getText().replaceAll("[^0-9,.]", "").replace(",", "."));
             double totalPriceA = (holidayDayNumber * textA * priceA);
-            Assert.assertEquals(totalPriceA, roomTotalPriceText, "Fiyat Doğru Değil");
+            Assert.assertEquals(totalPriceA, roomTotalPriceText, "Total price is wrong");
         } else if (dc.roomName.get(randomRoom).getText().equals("Doppelzimmer Standard")) {
+            if (dc.ErwachseneText.get(randomRoom).getText().contains("+€")) {
+                String erwachseneStr = dc.ErwachseneText.get(randomRoom).getText().replaceAll("[^0-9,.]", "").replace(",", ".");
+                String erwachsenePricePart = erwachseneStr.substring(1);
+                erwachsenePricePartDouble = Double.parseDouble(erwachsenePricePart);
+            }
+            if (dc.KinderText.get(randomRoom).getText().contains("+€")) {
+                String kinderStr = dc.KinderText.get(randomRoom).getText().replaceAll("[^0-9,.]", "").replace(",", ".");
+                String kinderPricePart = kinderStr.substring(1);
+                kinderPricePartDouble = Double.parseDouble(kinderPricePart);
+
+            }
             int textB = Integer.parseInt(dc.ZimmerText.get(1).getText());
             double priceB = Double.parseDouble(dc.roomPrice.get(1).getText().replaceAll("[^0-9,.]", "").replace(",", "."));
-            double totalPriceB = (holidayDayNumber * textB * priceB);
-            Assert.assertEquals(totalPriceB, roomTotalPriceText, "Fiyat Doğru Değil");
+            double totalPriceB = (holidayDayNumber * textB * priceB)+(erwachsenePricePartDouble*textB)+(kinderPricePartDouble*textB);
+            Assert.assertEquals(totalPriceB, roomTotalPriceText, "Total price is wrong");
         } else if (dc.roomName.get(randomRoom).getText().equals("Doppelzimmer Komfort")) {
+            if (dc.ErwachseneText.get(randomRoom).getText().contains("+€")) {
+                String erwachseneStr = dc.ErwachseneText.get(randomRoom).getText().replaceAll("[^0-9,.]", "").replace(",", ".");
+                String erwachsenePricePart = erwachseneStr.substring(1);
+                erwachsenePricePartDouble = Double.parseDouble(erwachsenePricePart);
+            }
+            if (dc.KinderText.get(randomRoom).getText().contains("+€")) {
+                String kinderStr = dc.KinderText.get(randomRoom).getText().replaceAll("[^0-9,.]", "").replace(",", ".");
+                String kinderPricePart = kinderStr.substring(1);
+                kinderPricePartDouble = Integer.parseInt(kinderPricePart);
+
+            }
             int textC = Integer.parseInt(dc.ZimmerText.get(2).getText());
             double priceC = Double.parseDouble(dc.roomPrice.get(2).getText().replaceAll("[^0-9,.]", "").replace(",", "."));
-            double totalPriceC = holidayDayNumber * textC * priceC;
-            Assert.assertEquals(totalPriceC, roomTotalPriceText, "Fiyat Doğru Değil");
+            double totalPriceC = (holidayDayNumber * textC * priceC)+(erwachsenePricePartDouble* textC)+(kinderPricePartDouble* textC);
+            Assert.assertEquals(totalPriceC, roomTotalPriceText, "Total price is wrong");
         } else if (dc.roomName.get(randomRoom).getText().equals("Familien Suite (Dreibettzimmer)")) {
             int textD = Integer.parseInt(dc.ZimmerText.get(3).getText());
             double priceD = Double.parseDouble(dc.roomPrice.get(3).getText().replaceAll("[^0-9,.]", "").replace(",", "."));
             double totalPriceD = (holidayDayNumber * textD * priceD);
-            Assert.assertEquals(totalPriceD, roomTotalPriceText, "Fiyat Doğru Değil");
+            Assert.assertEquals(totalPriceD, roomTotalPriceText, "Total price is wrong");
         }
 
         System.out.println(roomTotalPriceText);
