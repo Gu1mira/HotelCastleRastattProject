@@ -2,7 +2,7 @@ Feature: Jetzt Buchen/Book Now
 
   Background:
     Given Navigate to the Hotel Castle
-
+  @SmokeTest
   Scenario: Booking Functionality
     When Customer clicks on the element in Headers
       | Jetzt Buchen |

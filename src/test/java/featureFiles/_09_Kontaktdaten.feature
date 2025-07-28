@@ -2,7 +2,7 @@ Feature: Room Booking
 
   Background:
     Given Navigate to the Hotel Castle Rastatt
-
+  @SmokeTest
   Scenario: Filling in guest information according to the selected room information
 
 

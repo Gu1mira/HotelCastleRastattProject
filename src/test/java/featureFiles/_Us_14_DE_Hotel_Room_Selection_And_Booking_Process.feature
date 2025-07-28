@@ -1,5 +1,5 @@
 Feature: Hotel room selection and booking process functionality
-
+  @SmokeTest
   Scenario: Hotel Room Steps
 
     Given Navigate to the hotel castle rastatt

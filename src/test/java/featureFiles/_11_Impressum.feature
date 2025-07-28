@@ -1,5 +1,5 @@
 Feature: Impressum
-
+  @RegressionTest
   Scenario: Impressum Functionality
     Given Navigate to the Hotel Castle Rastatt
     And The user clicks Impressum link at bottom side

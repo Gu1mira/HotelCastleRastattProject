@@ -1,5 +1,5 @@
 Feature: Start button functionality
-
+  @RegressionTest
   Scenario: Start Buton Steps
 
     Given Navigate to the hotel castle rastatt
