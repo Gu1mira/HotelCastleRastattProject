@@ -1,5 +1,5 @@
 Feature:  Uber Uns Page Navigation
-
+ @SmokeTest
   Scenario: User navigates to Uber Uns page and verifies content
    Given Navigate to the Hotel Castle Rastatt Homepage
     When The user clicks on the Uber Uns link in the top navigation menu

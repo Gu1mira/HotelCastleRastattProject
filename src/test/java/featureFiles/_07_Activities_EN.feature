@@ -1,5 +1,5 @@
 Feature: Activities Page Navigation
-
+  @RegressionTest
   Scenario: Activities page
 
     Given Navigate to the Hotel Castle Rastatt

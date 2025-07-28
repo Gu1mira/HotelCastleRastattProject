@@ -1,5 +1,5 @@
 Feature: Location
-
+  @SmokeTest
   Scenario: Verify language switch and map visibility on the Location page
     Given Navigate to the Hotel Castle Rastatt in German
     And The user clicks on the Anfahrt tab from the top menu

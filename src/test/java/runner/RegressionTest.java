@@ -11,7 +11,9 @@ import utilities.GWD;
 @CucumberOptions(
         tags = "@RegressionTest",
         features = {"src/test/java/featureFiles"},
-        glue = {"stepDefinitions", "hooks"}
+        glue = {"stepDefinitions", "hooks"},
+        plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
+
 )
 
 public class RegressionTest extends AbstractTestNGCucumberTests {

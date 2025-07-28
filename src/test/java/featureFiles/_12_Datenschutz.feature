@@ -1,5 +1,5 @@
 Feature: Privacy Policy Page Verification
-
+  @RegressionTest
   Scenario: Verify footer link and page content
     Given The user navigates to the homepage
     When The user spots the Datenschutz link in the footer, clicks it

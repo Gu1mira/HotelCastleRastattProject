@@ -1,5 +1,5 @@
 Feature: CheckIn and CheckOut
-
+  @SmokeTest
   Scenario: CheckIn and CheckOut Calender Widget Functionality
     Given Navigate to the Hotel Castle Rastatt
     When The customer click  on the english language icon
