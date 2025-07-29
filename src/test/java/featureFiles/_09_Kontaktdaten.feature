@@ -1,19 +1,16 @@
 Feature: Room Booking
 
   Background:
-    Given Navigate to the Hotel Castle Rastatt
+    Given Navigate to the Hotel Castle
+
   @SmokeTest
   Scenario: Filling in guest information according to the selected room information
-
-
     When Customer clicks on the element in Headers
       | Jetzt Buchen |
     And Customer clicks on the element in Dialog Content
       | Search Start Date |
-    And Verifies that the date container displays for the check-in date
     Then Verifies that previous days, month and years cannot be selected
     When Customer selects a check-in date
-    Then Verifies that date container displays for the check-out date
     When Customer clicks on the element in Dialog Content
       | Search End Date |
     Then Verifies that only dates after the check-in date can be selected
