@@ -116,7 +116,7 @@ public class DialogContent extends ReusableMethods {
     @FindBy(css = "[data-label='Kostenstelle']")
     public WebElement costCenter;
 
-    @FindBy(css = "[title='reference']")
+    @FindBy(css = "[data-label=\"Referenz\"]")
     public WebElement reference;
 
     @FindBy(linkText = "Ich stimme den")

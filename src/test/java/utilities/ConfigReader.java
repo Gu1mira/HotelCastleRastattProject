@@ -81,9 +81,9 @@ public class ConfigReader {
                 String costCenter = faker.company().industry();
                 properties.setProperty(keyword, costCenter);
                 break;
-            case "referans":
-                String referans = faker.lorem().word();
-                properties.setProperty(keyword, referans);
+            case "reference":
+                String reference = faker.lorem().word();
+                properties.setProperty(keyword, reference);
                 break;
 
 
